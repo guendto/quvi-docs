@@ -1,0 +1,31 @@
+
+NOTE: The repositories contain the skeleton code only, this means you
+      need to run 'bootstrap.sh' after you have cloned the repository;
+      refer to their corresponding README files
+
+libquvi-scripts.git (http://repo.or.cz/w/libquvi-scripts.git[Browse])::
++
+----
+$ git clone git://repo.or.cz/libquvi-scripts.git
+----
+
+libquvi.git (http://repo.or.cz/w/libquvi.git[Browse])::
++
+----
+$ git clone git://repo.or.cz/libquvi.git
+----
+
+quvi-tool.git (http://repo.or.cz/w/quvi-tool.git[Browse])::
++
+----
+$ git clone git://repo.or.cz/quvi-tool.git
+----
+
+quvi-np.git (http://repo.or.cz/w/quvi-np.git[Browse])::
++
+----
+$ git clone git://repo.or.cz/quvi-np.git
+----
+
+TIP: 'quvi-np.git' holds misc. files related to the quvi project,
+     including this website

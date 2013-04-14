@@ -1,0 +1,179 @@
+include::shared/header.txt[]
+
+[[about]]
+About
+-----
+
+The quvi project parses media stream URLs for Internet applications that
+would otherwise have to use adobe flash multimedia platform to access
+the media streams. Typical examples of this are different media hosts,
+such as YouTube, for videos that utilize this platform to deliver the
+media content.
+
+[[q]]
+
+The project consists of the following components:
+
+libquvi-scripts::
+  The support scripts written in http://lua.org[Lua] that 'libquvi(3)'
+  calls to parse the media stream properties.
+
+libquvi::
+  The library with the C API for parsing the media stream properties.
+
+quvi::
+  The 'silly suite to access the flash media stream properties'. It
+  contains the 'quvi(1)' command line tool.
+
+This project does not aim to provide a working alternative to the flash
+technology but attempts to work around the flash technology.  See
+https://en.wikipedia.org/wiki/Adobe_Flash#Alternatives[here] for
+available alternatives.
+
+Why not adobe flash?
+~~~~~~~~~~~~~~~~~~~~
+
+  * https://en.wikipedia.org/wiki/Adobe_Flash#Performance[Performance]
+  * https://en.wikipedia.org/wiki/Adobe_Flash#Availability_on_desktop_operating_systems[Platforms]
+  * https://en.wikipedia.org/wiki/Adobe_Flash#Flash_client_security[Security]
+
+License
+~~~~~~~
+
+include::shared/license.txt[]
+
+[[faq]]
+FAQs
+~~~~
+
+  * link:faq_general.html[FAQ: General]
+  * link:faq_library.html[FAQ: Library]
+
+[[status]]
+Status
+~~~~~~
+
+Current::
+  0.4 is the current stable. 0.9 is the current unstable.
+
+Long-term goals::
+  Maintain the 0.4 series. Develop the 0.9 series which will ultimately
+  graduate as the next stable (1.0) replacing the 0.4 series.
+
+[[news]]
+News
+----
+
+2013-03-19::
+  'libquvi-scripts(7)' 0.4.14 http://is.gd/UU9vkM[released]
+
+2013-03-03::
+  'libquvi-scripts(7)' 0.4.13 http://is.gd/41GWgp[released]
+
+2013-02-10::
+  'libquvi-scripts(7)' 0.4.12 http://is.gd/ih7klQ[released]
+
+2013-02-01::
+  'libquvi-scripts(7)' 0.4.11 http://is.gd/qVWCzE[released]
+
+[[get]]
+Get
+---
+
+Official releases
+~~~~~~~~~~~~~~~~~
+
+.0.4
+
+* http://sf.net/projects/quvi/files/0.4/libquvi-scripts/['libquvi-scripts(7)']
+* http://sf.net/projects/quvi/files/0.4/libquvi/['libquvi(3)']
+* http://sf.net/projects/quvi/files/0.4/quvi/['quvi(1)']
+
+.0.9
+
+At this time, only the C API reference documentation is available for
+the 0.9 series.
+
+* http://sf.net/projects/quvi/files/0.9/libquvi/['libquvi(3)']
+
+git repositories
+~~~~~~~~~~~~~~~~
+
+Each repository contains the 'maint', the 'next' and the 'master'
+branches. See the link:contrib.html#branch[contrib] page for more
+information about the existing branches.
+
+include::shared/repo.txt[]
+
+[[bugs]]
+Reporting bugs
+--------------
+
+Report bugs to the link:mailinglist.html[quvi-devel mailing list] where
+the development and the maintenance is primarily done.  You do not have
+to be subscribed to the list to send a message there.  In the bug
+report, include:
+
+  * The version of 'libquvi(3)', 'libquvi-scripts(7)' and 'quvi(1)'
+  * How to reproduce the bug
+  * The exact text that was printed out (e.g. if a crash)
+  * Anything else you think is relevant
+
+See also link:contrib.html#patches[the contributor guidelines], if you have
+written a patch.
+
+[[doc]]
+Documentation
+-------------
+
+.Manual pages
+
+Each component comes with manpages which are installed by default.
+
+----
+$ man 7 libquvi-scripts
+$ man 3 libquvi
+$ man 1 quvi
+----
+
+.C API reference documentation for 'libquvi(3)'
+
+Both 0.4 and 0.9 can be found online and downloaded (see <<get,Official
+releases>>).  If you are planning to generate the documentation from the
+source code, see the README file for more information.
+
+* libquvi 0.4 - (link:doc/0.4/[Browse])
+* libquvi 0.9 - (link:doc/0.9/[Browse])
+
+.Other
+
+* link:doc/other/quvi-prj-ptnine.html[quvi-prj-ptnine(7)] - Overview of the changes in the quvi project 0.9
+
+[[prj]]
+Projects using 'libquvi(3)'
+---------------------------
+
+'<<q,quvi(1)>>'::
+  Of the the silly suite to access the flash media stream properties.
+
+http://cclive.sf.net/[cclive]::
+  A command line media download tool with low system footprint,
+  a rewrite in C++ of http://clive.sf.net/[clive].
+
+http://www.gnome.org/projects/totem/[totem]::
+  Totem is the official movie player of the GNOME desktop environment
+  based on GStreamer.
+
+https://github.com/tlvince/sniffy[sniffy]::
+  Monitors network traffic for media hosting websites and streams them
+  in your favourite media player.
+
+[[bind]]
+'libquvi(3)' bindings for other languages
+-----------------------------------------
+
+Python::
+  https://github.com/metal3d/python-libquvi[python-libquvi]
+
+Php::
+  https://github.com/kisscool-fr/php_quvi[php_quvi]

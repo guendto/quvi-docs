@@ -1,0 +1,26 @@
+quvi project
+============
+
+////
+:keywords:    quvi, project, libquvi, libquvi-scripts, flash, streams
+:description: The quvi project parses media stream URLs for Internet +
+              applications that would otherwise have to use adobe    +
+              flash multimedia platform to access the media streams.
+////
+
+:toc:
+:toc-placement: manual
+
+link:index.html#about[About]
+  | link:index.html#news[News]
+  | link:index.html#status[Status]
+  | link:index.html#get[Get]
+  | link:index.html#faq[FAQs]
+  | link:index.html#prj[Projects]
+  | link:index.html#doc[Documentation]
+  | link:index.html#bugs[Bugs]
+  | link:mailinglist.html[MailingLists]
+  | link:contrib.html[Contributing]
+
+// Disable. We'll use the above links instead.
+// toc::[]

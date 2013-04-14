@@ -1,0 +1,468 @@
+quvi-prj-ptnine(7)
+==================
+
+NAME
+----
+quvi-prj-ptnine - Overview of the changes in the quvi project 0.9
+
+DESCRIPTION
+-----------
+
+This document is not intended to be a comprehensive list of all of the
+changes made in the quvi project since the 0.4 series, but only a quick
+overview.
+
+The 0.9 changes how the project operates, integrates and interacts with
+the other components and applications that depend on it.  Almost all
+aspects of the project were redesigned and rewritten for the 0.9 series.
+
+This document will remain as a work-in-progress (WIP) until the 0.9
+graduates as the next stable (1.0) replacing the current stable (0.4).
+
+[[hl]]
+HIGHLIGHTS
+----------
+
+Redesign and rewrite::
+  All three project components 'libquvi-scripts(7)', 'libquvi(3)' and
+  'quvi(1)' have undergone complete overhaul. Everything was rewritten.
+
+Localization support::
+  Both 'libquvi(3)' and 'quvi(1)' now integrate with gettext.  The
+  support does not currently cover the http://lua.org[Lua] scripts of
+  'libquvi-scripts(7)'.
+
+Updated documentation::
+  The C API reference documentation was extended and rewritten in
+  http://www.stack.nl/~dimitri/doxygen/[doxygen] format. Additional
+  manual pages were added and are now written in
+  http://www.methods.co.nz/asciidoc/[asciidoc] format.
+
+New testsuites::
+  Both 'libquvi(3)' and 'libquvi-scripts(7)' come now with proper
+  testsuites.
+
+GLib::
+  Both 'libquvi(3)' and 'quvi(1)' now use
+  https://developer.gnome.org/glib/[GLib] extensively.
+
+Licensing changes::
+  See <<li,LICENSE>> for more information.
+
+[[lq]]
+'libquvi(3)'
+------------
+
+New C API::
+  The C API was redesigned and provides many new features.
+
+Improvements to finding the support scripts::
+  Duplicate checking is now done comparing file sha1 hashes.  Additional
+  environment variables were added. Some of the environment variables
+  from the 0.4 series were renamed.  LIBQUVI_SCRIPTS_DIR is no longer
+  exclusive, and accepts a colon-separated list of directories.
+  '--with-scriptsdir' option was added to the 'configure' script.
+
+Revised integration with 'libquvi-scripts(7)'::
+  Property parsing was revised: support was extended and improved.
+
+Stream selection::
+  The applications using the C API may now choose the stream (from the
+  returned ones) using a comma-separated list of regex PATTERNs. Support
+  for a new keyword 'croak' was added which may be used to instruct
+  'libquvi(3)' to exit if nothing matched the returned media stream IDs.
+
+Embedded media URL scan support::
+  The C API now provides a function set for scanning URLs for embedded
+  media URLs. The support is provided by the 'libquvi-scripts(7)'.
+
+Playlist support::
+  The C API now provides a function set for parsing the (media) playlist
+  properties. The support is provided by the 'libquvi-scripts(7)'.
+
+Subtitle support::
+  The C API now provides a function set for parsing the (media) subtitle
+  properties. The API also provides the basic format exporting support
+  for the common file formats, e.g. SubRip (srt). Both the parsing and
+  the exporting is provided by the 'libquvi-scripts(7)'.
+
+Script properties::
+  The {media,playlist,subtitle,...} scripts of 'libquvi-scripts(7)' now
+  have accessible properties, e.g. file{name,path} and SHA1 hash.
+
+Redirection::
+  The library now handles the URL redirections more effectively.
+
+[[lqs]]
+'libquvi-scripts(7)'
+--------------------
+
+Installation path::
+  The scripts of 'libquvi-scripts(7)' installs now, by default, to
++
+----
+$prefix/share/libquvi-scripts/$major.$minor/
+----
+
+New dependencies::
+  The scripts now use 3rd party modules, e.g. LuaExpat and LuaSocket.
+  LuaSocket ('socket.url') also replaces the 'quvi/url' module (covered
+  by the MIT license). This will end the "mixed bag of differently
+  licensed code" era for 'libquvi-scripts(7)'.
+
+New scripts::
+  0.9 adds new scripts and types {media, playlist, scan, subtitle,
+  subtitle-export}.
+
+Subtitles::
+  YouTube closed-captions (CCs) and transcriptions (TTSes) are now
+  supported.
+
+[[ms]]
+=== Media scripts
+
+Reinvented::
+  These scripts were previously known as the "webscripts".
+
+New location::
+  These scripts were previously installed to:
++
+----
+$prefix/share/libquvi-scripts/lua/website/
+----
++
+and can now be found under:
++
+----
+$prefix/share/libquvi-scripts/$major.$minor/media/
+----
+
+Return all media streams::
+  The 'parse' function now returns *all available media streams*. Making
+  the choice of which one to use is left for the applications once
+  'libquvi(3)' returns the stream data.
+  +
+  Each media stream will have an ID (e.g. $container_$encoding_$height)
+  which is used to select the stream.
+  +
+  The 'default' stream is now whatever the media script returns as the
+  first available stream.
+  +
+  The 'best' keyword from the 0.4 series remains supported. Like before,
+  how the best quality stream is determined, depends on the media host
+  and the data returned by the server.
++
+NOTE: Obsoletes the 'query_formats' of the 0.4 series
+
+Stream identification::
+  If the media script returns >1 media streams, the media script is
+  now expected to *identify* each media stream by assigning it an ID
+  which would (typically) be the form of "$container_$encoding_$height".
+
+No protocol categories::
+  The media scripts no longer need to specify the type of media stream
+  URLs that they return, e.g. HTTP and/or RTMP. Instead, it is now left
+  for the applications to determine how to handle the returned media
+  stream URLs. The C API of 'libquvi(3)' no longer supports "protocol
+  categories".
+
+No verification::
+  The HTTP media stream URL was previously "verified" after parsing it.
+  This was done by sending HTTP HEAD request to the server. 'libquvi(3)'
+  no longer does this for each media stream URL. Instead, the C API now
+  provides a function set (quvi_http_metainfo_*) that may be used to do
+  this, if needed.
+
+Optional properties::
+  All but the 'media stream URL' are now *optional* properties, meaning
+  that the media scripts no longer need to return every single property.
+  This also means that the applications that previously depended on
+  these non-optional properties, will have to work around this.
+
+New properties::
+  Additional media properties were introduced (e.g. height, width, ...).
+  The availability of these properties depends entirely on the data
+  returned by the server.
+
+[[qm]]
+=== 'quvi-modules(7)'
+
+These are a selection of 'importable' quvi modules implemented in Lua
+and provided for the 'libquvi-scripts(7)' to use.  See also
+'quvi-modules(7)' which is installed with 'libquvi-scripts(7)'.
+
+New location::
+  These modules were previously installed to:
++
+----
+$prefix/share/libquvi-scripts/lua/website/quvi/
+----
++
+and can now be found under:
++
+----
+$prefix/share/libquvi-scripts/$major.$minor/common/quvi/
+----
+
+
+New modules::
+  Many additional loadable quvi modules were added, e.g. 'quvi/debug'
+  and 'quvi/hex'.
+
+Constants::
+  The 'quvi/const' was revised and extended. The constant values are now
+  numerical values which are used to interact with 'quvi-object(7)' and
+  'libquvi(3)'.
+
+[[qo]]
+=== 'quvi-object(7)' (quvi.*)
+
+This is the collection of libquvi functions implemented in C and
+provided for the 'libquvi-scripts(7)' to use.  See also 'quvi-object(7)'
+which is installed with 'libquvi(3)'.
+
+Redesigned::
+  The 'quvi-object(7)' functions now conform to a new error handling
+  standard.  The options to these functions are now passed a more
+  standard and organized manner.
+
+crypto::
+  Support for cryptographic features were added. Both (symmetric)
+  encryption and decryption are supported. 'libquvi(3)' integrates with
+  libgcrypt which also determines the available symmetric algorithms.
+
+hash::
+  Support for message digest computation was added. 'libquvi(3)'
+  integrates with libgcrypt which also determines the available message
+  digest algorithms.
+
+base64::
+  Support for base64 encoding and decoding was added. 'libquvi(3)' uses
+  GLib for this.
+
+http::
+  Additional HTTP features were added, these include 'header
+  manipulation', 'URL resolving', 'metainfo querying' and 'URL
+  fetching'.
++
+NOTE: 'quvi.fetch' is now accessible as 'quvi.http.fetch'
+
+[[q]]
+'quvi(1)'
+---------
+
+Redefined role::
+  The role of 'quvi(1)' is now a 'multipurpose tool'. It can, for
+  example, be used to dump properties, extract streams and scan for
+  embedded media URLs. The 0.4 series could only dump the media
+  properties.
+
+New features::
+  The new features reflect those added in 'libquvi(3)'.
+
+New command line interface::
+  Rather than introducing a set of new _separate_ commands, 'quvi(1)'
+  now takes a 'built-in command' (e.g. "get") as an arg. This design was
+  influenced by other suites, e.g. 'git(1)'.
+
+Updated configuration::
+  The 'configuration file format' is now ini-like format that GLib
+  supports. The file format is not backward-compatible with the format
+  of the 0.4 series.
+  +
+  The 'quvirc search paths' are now determined by GLib. The
+  configuration system is now more flexible, e.g. system wide
+  configuration usage is now possible.
++
+TIP: See also 'quvirc(5)' and 'quvi(1)' for more information
+
+[[bc]]
+BACKWARD-COMPATIBILITY
+----------------------
+
+C API/ABI::
+  The new API of 'libquvi(3)' *breaks all backward-compatibility* with the
+  0.4 series.
+
+Configuration::
+  The 'quvi(1)' configuration file ('quvirc(5)') *breaks all
+  backward-compatibility* with that of the 0.4 series. The search paths
+  have also changed.
+
+Command line interface::
+  The CLI of 'quvi(1)' *breaks all backward-incompatiblity* with the 0.4
+  series.
+
+Licensing::
+  The 0.9 is licensed under a different license. See <<li,LICENSE>> for
+  more information.
+
+[[li]]
+LICENSE
+-------
+
+include::../../website/shared/license.txt[]
+
+[[wh]]
+WHERE
+-----
+
+See http://quvi.sourceforge.net/#get.  Any further maintenance of the
+0.4 series will take place in their corresponding 'maint-0.4' branches.
+
+[[r090]]
+RELEASE 0.9.0
+-------------
+
+There will *not* be an official 0.9.0 release. Instead, the first
+official release will be the 0.9.1 which will follow sometime after the
+initial push of 0.9 code into the public repos.
+
+[[unst]]
+UNSTABLE
+--------
+
+The 0.9 series are *unstable*.
+
+[[ifdev]]
+=== If you are a developer
+
+Using the new C API::
+  You should probably wait for the next stable (1.0) release if you are
+  planning to use the 0.9/1.0 C API in your application. The C API may
+  still undergo destabilizing effects which would only contribute to
+  your workload.
+
+Bindings for the new C API::
+  If you are maintaining or planning to develop bindings for another
+  language, consider taking part in the 0.9 development early on the
+  development code to help iron out any possible issues before the next
+  stable release.
+
+If you are interested in developing the quvi project, see
+<<contr,CONTRIBUTE>>.
+
+[[iftr]]
+=== If you are a translator
+
+It is best to wait for the next stable release (1.0). Both 'libquvi(3)'
+and 'quvi(1)' are likely to undergo many changes before we reach the 1.0
+milestone. This would most likely only add, unnecessarily, to the
+workload of maintaining the translations.
+
+[[ifpkg]]
+=== If you are a packager
+
+Unless you are packaging bleeding-edge software for a bleeding-edge
+distro, it is best to wait for the next stable release (1.0).
+
+[[contr]]
+CONTRIBUTE
+----------
+
+The purpose of this section is to underline the parts of the quvi
+project that, either require or could use, further development.
+
+NOTE: See http://quvi.sourceforge.net/contrib/ for info on how to
+      contribute to the project
+
+=== 'libquvi-scripts(7)'
+
+Media scripts::
+  Most of the media scripts from the 0.4 still remain to be ported to
+  the 0.9 series. Please *consider participating* in the porting effort
+  if you can and you are interested in helping with the project.
+  +
+  You can find examples of the solutions to the typical questions, like
+  "how to return multiple streams" or "how to generate the stream IDs",
+  in the existing scripts (of 0.9) in the repo code. See the scripts
+  under the 'media/' subdir.
+
+Playlist scripts::
+  Currently only 'playlist/youtube.lua' exists. If other websites
+  provide playlists, additional support could be implemented.
+
+Subtitle scripts::
+  Currently only 'subtitle/youtube.lua' exists. If other websites
+  provide subtitles, additional support could be implemented.
+  +
+  Currently only 'subtitle/export/subrip.lua' (srt) exists for exporting
+  the subtitle data into a format that most of the media players
+  understand. Additional support could be added if need be.
+
+Scan scripts::
+  Currently only 'scan/youtube.lua' exists. Additional support could be
+  implemented since many media hosts allow embedding their content.
+
+=== 'libquvi(3)' and 'quvi(1)'
+
+There is a fair likelyhood of finding remaining bugs in these two. They
+may still also need fine-tuning. Consider testing and reporting how the
+software builds, performs and behaves. See also <<rb,Reporting bugs>>.
+
+'quvi-get(1)'::
+  Currently supports only HTTP stream extractions. Support for
+  additional protocols could be implemented although this remains to be
+  investigated further. For the HTTP implementation, see the 'src/get/'
+  subdir (and the 'http.c').
+
+[[inst]]
+INSTALLATION
+------------
+
+Each project component comes with the *README* file which will cover the
+basic instructions and provides any additional information (e.g.
+regarding any non-standard options not covered by GNU Autotools). *Read
+the README file first*, it is maintained manually and exists for a
+reason.
+
+If you cannot find the answers in the README, post your questions to the
+<<rb,quvi-devel>> mailing list. It's possible that some of details may
+still be missing from the README file.
+
+The INSTALL file is the standard file provided by GNU Autotools.
+
+[[doc]]
+DOCUMENTATION
+-------------
+
+Each project component comes with its own documentation.
+
+=== Generation
+
+Typically:
+
+----
+$ make doc
+----
+
+For additional notes, see the README files.
+
+=== Manual pages
+
+The manpages (source files) are written in 'asciidoc(1)' syntax and can
+be found under the doc/ subdir.
+
+=== C API reference
+
+The libquvi C API reference documentation is generated from the
+'doxygen(1)' comments.
+
+NOTE: The documentation will go online following the <<r090,0.9.1>>
+      release and will be available at http://quvi.sourceforge.net/doc/
+
+=== Examples
+
+There are plenty of examples in both, the manpages and the C API
+reference documentation. 'libquvi(3)' source tree also contains the
+'examples/' subdir with the basic examples.
+
+[[rb]]
+Reporting bugs
+--------------
+
+quvi-devel mailing list::
+  Use the this list for discussion and reporting bugs, see
+  http://quvi.sourceforge.net/#bugs
+
+See also <<contr,CONTRIBUTE>>.

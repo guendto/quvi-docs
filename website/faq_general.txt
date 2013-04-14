@@ -1,0 +1,58 @@
+include::shared/header.txt[]
+
+FAQ: General
+------------
+
+[[li]]
+=== How is the quvi project licensed?
+
+include::shared/license.txt[]
+
+[[os]]
+=== Which operating systems does (lib)quvi run on?
+
+Linux and BSD (supported by the upstream). Other ports may exist, none
+of which we (the upstream) do not directly support.
+
+[[whynotall]]
+=== Why cannot the project support all flash based video websites?
+
+Most media hosting websites are technically very different. Our aim is
+to _work around_ the adobe flash requirement *not enable it*. This means
+that the quvi project cannot execute the flash object and follow the
+links but, instead, another way needs to be found in order to work
+around the flash.
+
+The typical solution is to parse the required properties and put
+together the URL to the media stream.
+
+[[addsupp]]
+=== Could you add support for website X?
+
+Patches are welcome. See also the next question.
+
+[[help]]
+=== I'm interested in contributing, how could I help?
+
+Please see link:contrib.html[Contributing].
+
+[[support]]
+=== What support is available for (lib)quvi(-scripts)?
+
+See the link:mailinglist.html[mailing lists] and the
+link:index.html#doc[documentation].
+
+[[bugs]]
+=== Where and how can I report a bug?
+
+Please see link:index.html#bugs[here].
+
+[[patch]]
+=== Where can I submit a patch?
+
+Please see link:contrib.html[here].
+
+[[repos]]
+=== Where are the development repositories?
+
+Please see link:contrib.html#repos[here].

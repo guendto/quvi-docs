@@ -1,0 +1,110 @@
+include::shared/header.txt[]
+
+FAQ: Library ['libquvi(3)']
+---------------------------
+
+[[lang]]
+=== What programming language is libquvi written in?
+
+The library is written in C. It embeds http://lua.org[Lua] which is used
+to call the support scripts (written in in Lua) from
+'libquvi-scripts(7)'.
+
+[[e]]
+=== Could you give a simple example?
+
+NOTE: Error checking omitted for brewity
+
+.0.9 and later
+
+[source,c]
+----
+/* Parse media properties for "URL". */
+
+#include <stdio.h>
+#include <quvi.h>
+
+int main(int argc, char **argv)
+{
+  quvi_media_t qm;
+  gchar *m_url;
+  quvi_t q;
+
+  q = quvi_new();
+  qm = quvi_media_new(q, URL);
+  quvi_media_get(qm, QUVI_MEDIA_STREAM_PROPERTY_URL, &m_url);
+  puts(m_url);
+  quvi_media_free(qm);
+  quvi_free(q);
+
+  return (0);
+}
+----
+
+.0.4 series
+
+[source,c]
+----
+/* Parse media properties for "URL". */
+
+#include <stdio>
+#include <quvi/quvi.h>
+
+int main(int argc, char **argv)
+{
+  quvi_media_t m;
+  gchar *m_url;
+  quvi_t q;
+
+  quvi_init(&q);
+  quvi_parse(q, URL, &m);
+  quvi_getprop(m, QUVIPROP_MEDIAURL, &m_url);
+  puts(m_url);
+  quvi_parse_close(&m);
+  quvi_close(&q);
+
+  return (0);
+}
+----
+
+TIP: The C API reference link:index.html#doc[documentation] contains
+     plenty more examples, the source tree of 'libquvi(3)' 0.9+ holds
+     also the examples/ subdir with more examples
+
+[[doc]]
+=== Where can I find the reference documentation for the 'libquvi(3)' C API?
+
+The documentation is link:index.html#doc[browsable online]. The
+link:index.html#get[official releases] contain the tarballs for offline
+use.
+
+[[bind]]
+=== Are there bindings for language X?
+
+See link:index.html#bind[here].
+
+[[comp]]
+=== How do I compile my project with 'libquvi(3)'?
+
+Linux/BSD (and alike) systems can use the pkg-config for this.
+
+.0.9 series
+----
+$ gcc myprog.c `pkg-config --cflags --libs libquvi-0.9` -o myprog
+----
+
+If you are using GNU Autotools, add the following line to your configure.ac:
+----
+PKG_CHECK_MODULES([libquvi], [libquvi-0.9 >= 0.9.0])
+----
+
+.0.4 series
+----
+$ gcc myprog.c `pkg-config --cflags --libs libquvi` -o myprog
+----
+
+If you are using GNU Autotools, add the following line to your configure.ac:
+----
+PKG_CHECK_MODULES([libquvi], [libquvi >= 0.4.0])
+----
+

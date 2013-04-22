@@ -37,6 +37,7 @@ Why not adobe flash?
   * https://en.wikipedia.org/wiki/Adobe_Flash#Availability_on_desktop_operating_systems[Platforms]
   * https://en.wikipedia.org/wiki/Adobe_Flash#Flash_client_security[Security]
 
+[[li]]
 License
 ~~~~~~~
 

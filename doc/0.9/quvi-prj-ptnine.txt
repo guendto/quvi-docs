@@ -184,6 +184,13 @@ New properties::
   The availability of these properties depends entirely on the data
   returned by the server.
 
+Persistant properties::
+  Use of `goto_url' instruction no longer resets the previously set
+  media properties, e.g. if script A sets qargs.title, the library will
+  pass the same value of qargs.title to script B.
++
+NOTE: 0.9 renamed the `redirect_url' to `goto_url'
+
 [[qm]]
 === 'quvi-modules(7)'
 

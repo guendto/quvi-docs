@@ -29,3 +29,5 @@ $ git clone git://repo.or.cz/quvi-np.git
 
 TIP: 'quvi-np.git' holds misc. files related to the quvi project,
      including this website
+
+NOTE: https://github.com/legatvs/[github] serves as a secondary depot

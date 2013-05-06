@@ -93,6 +93,19 @@ Script properties::
 Redirection::
   The library now handles the URL redirections more effectively.
 
+Cookie support::
+  Cookies are now always enabled. The rationale behind this is that some
+  of the media scripts may set arbitrary cookies that would enable the
+  cookie parser in libcurl to "understand and parse received cookies and
+  then use matching cookies in future requests" (source:
+  http://curl.haxx.se/libcurl/c/curl_easy_setopt.html).
+  +
+  These cookies will have to be cleared before the library invokes
+  another media script. libquvi does this by setting CURLOPT_COOKIELIST
+  to "ALL" which causes libcurl to clear the existing cookies. This,
+  however, still leaves the cookie parser enabled in libcurl for which
+  it does not provide a way to disable the cookie parser.
+
 [[lqs]]
 'libquvi-scripts(7)'
 --------------------

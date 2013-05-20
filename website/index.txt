@@ -65,6 +65,10 @@ Long-term goals::
 News
 ----
 
+2013-05-20::
+  Initial http://article.gmane.org/gmane.comp.web.flash.quvi/271[release]
+  of the 0.9 series
+
 2013-05-09::
   'libquvi-scripts(7)' 0.4.15
   http://article.gmane.org/gmane.comp.web.flash.quvi/261[released]

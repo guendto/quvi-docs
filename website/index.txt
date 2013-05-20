@@ -157,6 +157,7 @@ source code, see the README file for more information.
 .Other
 
 * link:doc/other/quvi-prj-ptnine.html[quvi-prj-ptnine(7)] - Overview of the changes in the quvi project 0.9
+* link:doc/other/howto-compile-linux.html[HOWTO: Compile (0.9) on GNU/Linux]
 
 [[prj]]
 Projects using 'libquvi(3)'

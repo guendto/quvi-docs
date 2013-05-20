@@ -159,7 +159,7 @@ Projects using 'libquvi(3)'
 ---------------------------
 
 '<<q,quvi(1)>>'::
-  Of the the silly suite to access the flash media stream properties.
+  The silly suite to access the flash media stream properties.
 
 http://cclive.sf.net/[cclive]::
   A command line media download tool with low system footprint,

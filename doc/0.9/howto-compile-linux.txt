@@ -1,0 +1,193 @@
+HOWTO: Compile the (lib)quvi(-scripts) on GNU/Linux
+===================================================
+
+Notes
+-----
+
+* This document is an overview of a userspace installation of all three
+  components of the quvi project
+
+* This document is Debian oriented but should translate to other GNU/Linux
+  systems easily
+  
+* Each project has a different set of the prerequisites, and have been
+  covered in their corresponding README files under "Requirements"
+
+* These examples use VPATH ('$top_srcdir/tmp' subdir) to confine all
+  derived files to a single directory, to keep the source directories
+  uncluttered
+
+[[prep]]
+Preparing
+---------
+----
+# aptitude install build-essential
+----
+
+[[get]]
+Get the source code
+-------------------
+
+=== Official releases
+
+This is the recommended path for most users.
+
+----
+$ wget http://sourceforge.net/projects/quvi/files/0.9/libquvi-scripts/libquvi-scripts-0.9.20130520.tar.xz/download
+$ wget http://sourceforge.net/projects/quvi/files/0.9/libquvi/libquvi-0.9.1.tar.xz/download
+$ wget http://sourceforge.net/projects/quvi/files/0.9/quvi/quvi-0.9.1.tar.xz/download
+----
+
+=== Development code
+
+Alternatively, you could grab the development code from the git
+repository.  If you choose to do this, keep in mind that the code in the
+repository does not contain the configuration files that are typically
+distributed with the official source code tarballs.  This means that you
+will have to install additional software (GNU Autotools, asciidoc,
+xmlto, etc.) to be able to produce them. The most current (and
+*unstable*) code resides in the 'next' branch of each repository.
+
+----
+$ wget https://github.com/legatvs/libquvi-scripts/tarball/next -O libquvi-scripts.tar.gz
+$ wget https://github.com/legatvs/libquvi/tarball/next -O libquvi.tar.gz
+$ wget https://github.com/legatvs/quvi-tool/tarball/next -O quvi-tool.tar.gz
+----
+
+[[build]]
+Building and installation
+-------------------------
+
+[[lqs]]
+=== libquvi-scripts
+
+* Extract:
++
+----
+$ tar xf libquvi-scripts-$RELEASE.tar.xz
+$ cd libquvi-scripts-$RELEASE
+----
++
+Or, if you are building from the development code:
++
+----
+$ tar xf libquvi-scripts.tar.xz
+$ cd legatvs-libquvi-scripts*
+$ sh bootstrap.sh
+----
+
+* Install the prerequisites:
++
+----
+$ sudo aptitude install liblua5.1-bitop0 liblua5.1-expat \
+                        liblua5.1-json liblua5.1-socket2
+----
+
+* Configure and compile:
++
+----
+$ mkdir tmp ; cd tmp
+$ ../configure --prefix=/tmp/build
+$ make
+----
+
+* Install:
++
+----
+$ make install
+----
++
+TIP: If you intend to upgrade libquvi-scripts later, you could keep
+     this VPATH, and run "make uninstall" the next time, before you
+     repeated the steps from above with a new release
+
+[[lq]]
+=== libquvi
+* Extract:
++
+----
+$ tar xf libquvi-$RELEASE.tar.xz
+$ cd libquvi-$RELEASE
+----
++
+Or, if you are building from the development code:
++
+----
+$ tar xf libquvi.tar.xz
+$ cd legatvs-libquvi*
+$ sh bootstrap.sh
+----
+
+* Install the prerequisites:
++
+----
+$ sudo aptitude install libcurl4-gnutls-dev libglib2.0-dev \
+                        liblua5.1-0-dev libproxy-dev libgcrypt11-dev
+----
+
+* Configure and compile:
++
+----
+$ mkdir tmp ; cd tmp
+$ PKG_CONFIG_PATH=/tmp/build/lib/pkgconfig ../configure --prefix=/tmp/build
+$ make
+----
+
+* Install:
++
+----
+$ make install
+----
+
+[[q]]
+=== quvi
+* Extract:
++
+----
+$ tar xf quvi-$RELEASE.tar.xz
+$ cd quvi-$RELEASE
+----
++
+Or, if you are building from the development code:
++
+----
+$ tar xf quvi-tool.tar.xz
+$ cd legatvs-quvi-tool*
+$ sh bootstrap.sh
+----
+
+* Install the prerequisites:
++
+----
+$ sudo aptitude install libcurl4-gnutls-dev libglib2.0-dev \
+                        libjson-glib-dev libxml2-dev libjson-glib-dev
+----
+
+* Configure and compile:
++
+----
+$ mkdir tmp ; cd tmp
+$ PKG_CONFIG_PATH=/tmp/build/lib/pkgconfig ../configure --prefix=/tmp/build
+$ make
+----
+
+* Install:
++
+----
+$ make install
+----
+
+Running
+-------
+
+* If you'd like 'man(1)' to be able to find the installed manual pages:
++
+----
+$ export MANPATH=/tmp/build/share/man/
+----
+
+* Run 'quvi(1)':
++
+----
+$ /tmp/build/bin/quvi
+----

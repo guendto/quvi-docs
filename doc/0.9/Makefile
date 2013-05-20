@@ -20,7 +20,9 @@ ASCIIDOC_OPTS=\
   -a linkcss\
   -a icons
 
-MAN7_TXT=quvi-prj-ptnine.txt
+MAN7_TXT=\
+  howto-compile-linux.txt\
+  quvi-prj-ptnine.txt
 
 MAN_TXT=$(MAN7_TXT)
 MAN_HTML=$(patsubst %.txt,%.html,$(MAN_TXT))

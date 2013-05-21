@@ -17,6 +17,12 @@ Notes
   derived files to a single directory, to keep the source directories
   uncluttered
 
+* These instructions were written with 0.9+ in mind, though they are
+  applicable to the 0.4 series with the following exceptions:
+  +
+  - how to http://quvi.sf.net/#get[get] the source code
+  - different set of prerequisites
+
 [[prep]]
 Preparing
 ---------

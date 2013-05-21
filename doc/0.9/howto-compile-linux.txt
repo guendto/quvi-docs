@@ -1,198 +1,114 @@
-HOWTO: Compile the (lib)quvi(-scripts) on GNU/Linux
-===================================================
+howto-compile-linux(7)
+======================
 
-Notes
------
+NAME
+----
+howto-compile-linux - Overview of the steps to compile quvi on GNU/Linux
 
-* This document is an overview of a userspace installation of all three
-  components of the quvi project
+DESCRIPTION
+-----------
 
-* This document is Debian oriented but should translate to other GNU/Linux
-  systems easily
-  
+This document is an overview on how to compile and install the quvi
+project {libquvi-scripts, libquvi, quvi} on a GNU/Linux system.
+
+.Notes
+
+* This document is Debian oriented but should translate easily to other
+  GNU/Linux systems
+
 * Each project has a different set of the prerequisites, and have been
   covered in their corresponding README files under "Requirements"
 
-* These examples use VPATH ('$top_srcdir/tmp' subdir) to confine all
-  derived files to a single directory, to keep the source directories
-  uncluttered
+* This documentation uses VPATH to confine all derived files to a single
+  directory, to keep the source directories uncluttered
 
-* The binaries are installed to /tmp which on many systems is typically
-  cleared at system reboot
+* These instructions were written with 0.9+ in mind, though they could
+  be followed to build and install 0.4 with different {prerequisites,
+  download links}
 
-* These instructions were written with 0.9+ in mind, though they are
-  applicable to the 0.4 series with the following exceptions:
-  +
-  - how to http://quvi.sf.net/#get[get] the source code
-  - different set of prerequisites
-
-[[prep]]
-Preparing
----------
-----
-# aptitude install build-essential
-----
-
-[[get]]
-Get the source code
--------------------
-
-=== Official releases
-
-This is the recommended path for most users.
-
-----
-$ wget http://sourceforge.net/projects/quvi/files/0.9/libquvi-scripts/libquvi-scripts-0.9.20130520.tar.xz/download
-$ wget http://sourceforge.net/projects/quvi/files/0.9/libquvi/libquvi-0.9.1.tar.xz/download
-$ wget http://sourceforge.net/projects/quvi/files/0.9/quvi/quvi-0.9.1.tar.xz/download
-----
-
-=== Development code
-
-Alternatively, you could grab the development code from the git
-repository.  If you choose to do this, keep in mind that the code in the
-repository does not contain the configuration files that are typically
-distributed with the official source code tarballs.  This means that you
-will have to install additional software (GNU Autotools, asciidoc,
-xmlto, etc.) to be able to produce them. The most current (and
-*unstable*) code resides in the 'next' branch of each repository.
-
-----
-$ wget https://github.com/legatvs/libquvi-scripts/tarball/next -O libquvi-scripts.tar.gz
-$ wget https://github.com/legatvs/libquvi/tarball/next -O libquvi.tar.gz
-$ wget https://github.com/legatvs/quvi-tool/tarball/next -O quvi-tool.tar.gz
-----
-
-[[build]]
 Building and installation
 -------------------------
 
-[[lqs]]
-=== libquvi-scripts
-
-* Extract:
-+
-----
-$ tar xf libquvi-scripts-$RELEASE.tar.xz
-$ cd libquvi-scripts-$RELEASE
-----
-+
-Or, if you are building from the development code:
-+
-----
-$ tar xf libquvi-scripts.tar.xz
-$ cd legatvs-libquvi-scripts*
-$ sh bootstrap.sh
-----
-
 * Install the prerequisites:
 +
 ----
-$ sudo aptitude install liblua5.1-bitop0 liblua5.1-expat \
-                        liblua5.1-json liblua5.1-socket2
+$ sudo aptitude install build-essential libgcrypt11-dev     \
+                        libjson-glib-dev libxml2-dev        \
+                        liblua5.1-bitop0 liblua5.1-expat    \
+                        liblua5.1-json liblua5.1-socket2    \
+                        libcurl4-gnutls-dev liblua5.1-0-dev \
+                        libproxy-dev
 ----
 
-* Configure and compile:
+* Create a directory for building the software:
 +
 ----
-$ mkdir tmp ; cd tmp
-$ ../configure --prefix=/tmp/build
-$ make
+$ cd ~
+$ mkdir -p build/{inst,tar} ; cd build/tar
 ----
 
-* Install:
+* Get the official releases:
 +
 ----
+$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi-scripts/libquvi-scripts-0.9.20130520.tar.xz
+$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi/libquvi-0.9.1.tar.xz
+$ wget http://downloads.sourceforge.net/project/quvi/0.9/quvi/quvi-0.9.1.tar.xz
+----
+
+* Export the destination path for practical purposes:
++
+----
+$ cd ..
+$ export DEST=`pwd`/inst
+----
++
+The software will be installed to the ~/build/inst/ directory.
+
+* Extract, compile and install libquvi-scripts:
++
+----
+$ tar xf tar/libquvi-scripts-0.9.20130520.tar.xz
+$ cd libquvi-scripts-0.9.20130520
+$ mkdir inst ; cd inst
+$ ../configure --prefix=$DEST && make install
+$ cd ../..
+----
+
+* Extract, compile and install libquvi:
++
+----
+$ tar xf tar/libquvi-0.9.1.tar.xz
+$ cd libquvi-0.9.1
+$ mkdir inst ; cd inst
+$ PKG_CONFIG_PATH=$DEST/lib/pkgconfig/ ../configure --prefix=$DEST
 $ make install
+$ cd ../..
 ----
 
-[[lq]]
-=== libquvi
-* Extract:
+* Extract, compile and install quvi:
 +
 ----
-$ tar xf libquvi-$RELEASE.tar.xz
-$ cd libquvi-$RELEASE
-----
-+
-Or, if you are building from the development code:
-+
-----
-$ tar xf libquvi.tar.xz
-$ cd legatvs-libquvi*
-$ sh bootstrap.sh
-----
-
-* Install the prerequisites:
-+
-----
-$ sudo aptitude install libcurl4-gnutls-dev libglib2.0-dev \
-                        liblua5.1-0-dev libproxy-dev libgcrypt11-dev
-----
-
-* Configure and compile:
-+
-----
-$ mkdir tmp ; cd tmp
-$ PKG_CONFIG_PATH=/tmp/build/lib/pkgconfig ../configure --prefix=/tmp/build
-$ make
-----
-
-* Install:
-+
-----
+$ tar xf tar/quvi-0.9.1.tar.xz
+$ cd quvi-0.9.1
+$ mkdir inst ; cd inst
+$ PKG_CONFIG_PATH=$DEST/lib/pkgconfig/ ../configure --prefix=$DEST
 $ make install
-----
-
-[[q]]
-=== quvi
-* Extract:
-+
-----
-$ tar xf quvi-$RELEASE.tar.xz
-$ cd quvi-$RELEASE
-----
-+
-Or, if you are building from the development code:
-+
-----
-$ tar xf quvi-tool.tar.xz
-$ cd legatvs-quvi-tool*
-$ sh bootstrap.sh
-----
-
-* Install the prerequisites:
-+
-----
-$ sudo aptitude install libcurl4-gnutls-dev libglib2.0-dev \
-                        libjson-glib-dev libxml2-dev libjson-glib-dev
-----
-
-* Configure and compile:
-+
-----
-$ mkdir tmp ; cd tmp
-$ PKG_CONFIG_PATH=/tmp/build/lib/pkgconfig ../configure --prefix=/tmp/build
-$ make
-----
-
-* Install:
-+
-----
-$ make install
+$ cd ../..
 ----
 
 Running
 -------
 
-* If you'd like 'man(1)' to be able to find the installed manual pages:
+* The executable can be found in the 'bin' directory:
 +
 ----
-$ export MANPATH=/tmp/build/share/man/
+$ $DEST/bin/quvi --version
 ----
 
-* Run 'quvi(1)':
+* Modify MANPATH so that 'man(1)' will find the installed manpages:
 +
 ----
-$ /tmp/build/bin/quvi
+$ export MANPATH=$MANPATH:$DEST/share/man/
+$ man 1 quvi-get
+$ $DEST/bin/quvi help get
 ----

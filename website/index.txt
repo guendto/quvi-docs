@@ -92,18 +92,17 @@ Get
 Official releases
 ~~~~~~~~~~~~~~~~~
 
-.0.4
+.0.4 (current stable)
 
 * http://sf.net/projects/quvi/files/0.4/libquvi-scripts/['libquvi-scripts(7)']
 * http://sf.net/projects/quvi/files/0.4/libquvi/['libquvi(3)']
 * http://sf.net/projects/quvi/files/0.4/quvi/['quvi(1)']
 
-.0.9
+.0.9 (unstable)
 
-At this time, only the C API reference documentation is available for
-the 0.9 series.
-
+* http://sf.net/projects/quvi/files/0.9/libquvi-scripts/['libquvi-scripts(7)']
 * http://sf.net/projects/quvi/files/0.9/libquvi/['libquvi(3)']
+* http://sf.net/projects/quvi/files/0.9/quvi/['quvi(1)']
 
 git repositories
 ~~~~~~~~~~~~~~~~

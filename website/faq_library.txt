@@ -13,7 +13,7 @@ to call the support scripts (written in in Lua) from
 [[e]]
 === Could you give a simple example?
 
-NOTE: Error checking omitted for brewity
+NOTE: Error checking omitted for brevity
 
 .0.9 and later
 

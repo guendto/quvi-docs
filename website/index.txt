@@ -107,9 +107,9 @@ Official releases
 git repositories
 ~~~~~~~~~~~~~~~~
 
-Each repository contains the 'maint', the 'next' and the 'master'
-branches. See the link:contrib.html#branch[contrib] page for more
-information about the existing branches.
+Each repository contains the 'maint', the 'maint-0.4', the 'next' and
+the 'master' branches. See the link:contrib.html#branch[contrib] page
+for more information about the existing branches.
 
 include::shared/repo.txt[]
 

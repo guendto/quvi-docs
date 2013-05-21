@@ -104,6 +104,8 @@ Official releases
 * http://sf.net/projects/quvi/files/0.9/libquvi/['libquvi(3)']
 * http://sf.net/projects/quvi/files/0.9/quvi/['quvi(1)']
 
+For building instructions, see the link:#doc[Documentation] section.
+
 git repositories
 ~~~~~~~~~~~~~~~~
 
@@ -134,8 +136,12 @@ written a patch.
 Documentation
 -------------
 
-.Manual pages
+.Notes
 
+* link:doc/other/quvi-prj-ptnine.html[quvi-prj-ptnine(7)] -
+  Overview of the changes in the 0.9+ series
+
+.Manual pages
 Each component comes with manpages which are installed by default.
 
 ----
@@ -153,10 +159,10 @@ source code, see the README file for more information.
 * libquvi 0.4 - (link:doc/0.4/[Browse])
 * libquvi 0.9 - (link:doc/0.9/[Browse])
 
-.Other
+.HOWTOs
 
-* link:doc/other/quvi-prj-ptnine.html[quvi-prj-ptnine(7)] - Overview of the changes in the quvi project 0.9
-* link:doc/other/howto-compile-linux.html[HOWTO: Compile (0.9) on GNU/Linux]
+* HOWTO: link:doc/other/howto-compile-linux.html[Compile 0.9+ on GNU/Linux]
+  (applicable to the 0.4 series for most parts, also)
 
 [[prj]]
 Projects using 'libquvi(3)'

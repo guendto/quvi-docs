@@ -14,14 +14,14 @@ Each repository contains the 'maint', the 'next' and the 'master'
 branches.
 
 [frame="topbot",width="75%",grid="none"]
-[cols="<1h,<10"]
+[cols="<2h,<10"]
 |====
-|maint  |Reserved for the maintenance releases (there may be additional
-          branches, e.g. _maint-0.4_)
-|master |Holds the last release, this branch is considered to be
-          'stable' -- it gets updated *only* when the _next_ branch
-          graduates (merged into _master_)
-|next   |The code currently being developed for the next release
+|maint    |Reserved for the maintenance releases
+|maint-0.4|For the maintenance releases of 0.4
+|master   |Holds the last release, this branch is considered to be
+            'stable' -- it gets updated *only* when the _next_ branch
+            graduates (merged into _master_)
+|next     |The code currently being developed for the next release
 |====
 
 [[patches]]

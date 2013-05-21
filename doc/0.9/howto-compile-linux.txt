@@ -17,6 +17,9 @@ Notes
   derived files to a single directory, to keep the source directories
   uncluttered
 
+* The binaries are installed to /tmp which on many systems is typically
+  cleared at system reboot
+
 * These instructions were written with 0.9+ in mind, though they are
   applicable to the 0.4 series with the following exceptions:
   +
@@ -102,10 +105,6 @@ $ make
 ----
 $ make install
 ----
-+
-TIP: If you intend to upgrade libquvi-scripts later, you could keep
-     this VPATH, and run "make uninstall" the next time, before you
-     repeated the steps from above with a new release
 
 [[lq]]
 === libquvi

@@ -11,20 +11,19 @@ include::shared/license.txt[]
 [[os]]
 === Which operating systems does (lib)quvi run on?
 
-Linux and BSD (supported by the upstream). Other ports may exist, none
-of which we (the upstream) do not directly support.
+GNU/Linux and BSD (supported by the upstream). Other ports may exist, none
+of which the upstream directly supports.
 
 [[whynotall]]
 === Why cannot the project support all flash based video websites?
 
 Most media hosting websites are technically very different. Our aim is
-to _work around_ the adobe flash requirement *not enable it*. This means
-that the quvi project cannot execute the flash object and follow the
-links but, instead, another way needs to be found in order to work
-around the flash.
+to _work around_ the adobe flash requirement, *not enable it*.
 
-The typical solution is to parse the required properties and put
-together the URL to the media stream.
+This means that the project cannot simply just execute the flash object
+code and follow the links, but find another way to access the media
+streams. The typical solution is to parse the required properties and
+then put together the media stream URLs from those.
 
 [[addsupp]]
 === Could you add support for website X?

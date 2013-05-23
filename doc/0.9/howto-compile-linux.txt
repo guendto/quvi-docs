@@ -51,8 +51,41 @@ $ mkdir -p build/{inst,tar} ; cd build/tar
 +
 ----
 $ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi-scripts/libquvi-scripts-0.9.20130520.tar.xz
+$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi-scripts/libquvi-scripts-0.9.20130520.tar.xz.sig
+
 $ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi/libquvi-0.9.1.tar.xz
+$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi/libquvi-0.9.1.tar.xz.sig
+
 $ wget http://downloads.sourceforge.net/project/quvi/0.9/quvi/quvi-0.9.1.tar.xz
+$ wget http://downloads.sourceforge.net/project/quvi/0.9/quvi/quvi-0.9.1.tar.xz.sig
+----
+
+* Verify the downloads (optional, recommended):
++
+----
+$ gpg --recv-keys 0xCAC8C0A9
+$ gpg --verify libquvi-scripts-0.9.20130520.tar.xz.sig
+$ gpg --verify libquvi-0.9.1.tar.xz.sig
+$ gpg --verify quvi-0.9.1.tar.xz.sig
+----
++
+There are also SHA512SUMS files for each quvi project component:
++
+----
+$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi-scripts/SHA512SUMS \
+          -O SHA512SUMS.libquvi-scripts
+$ gpg --verify SHA512SUMS.libquvi-scripts
+$ sha512sum -c SHA512SUMS.libquvi-scripts
+
+$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi/SHA512SUMS \
+          -O SHA512SUMS.libquvi
+$ gpg --verify SHA512SUMS.libquvi
+$ sha512sum -c SHA512SUMS.libquvi
+
+$ wget http://downloads.sourceforge.net/project/quvi/0.9/quvi/SHA512SUMS \
+          -O SHA512SUMS.quvi
+$ gpg --verify SHA512SUMS.quvi
+$ sha512sum -c SHA512SUMS.quvi
 ----
 
 * Export the destination path for practical purposes:

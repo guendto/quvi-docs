@@ -32,12 +32,21 @@ Building and installation
 * Install the prerequisites:
 +
 ----
-$ sudo aptitude install build-essential libgcrypt11-dev     \
-                        libjson-glib-dev libxml2-dev        \
-                        liblua5.1-bitop0 liblua5.1-expat    \
-                        liblua5.1-json liblua5.1-socket2    \
-                        libcurl4-gnutls-dev liblua5.1-0-dev \
-                        libproxy-dev
+$ sudo aptitude install build-essential libgcrypt11-dev libproxy-dev \
+                        libcurl4-gnutls-dev liblua5.1-0-dev          \
+                        libjson-glib-dev libxml2-dev
+
+# Debian Wheezy:
+$ sudo aptitude install lua-bitop lua-expat lua-json lua-socket
+
+  NOTE: 2013-06-04 - Debian, Wheezy
+        At the time of writing this, the lua-socket (listed among the
+        libquvi-scripts prerequisites) package does not contain the
+        files for Lua 5.2, forcing the installation of liblua 5.1.
+
+# Debian Squeeze:
+$ sudo aptitude install liblua5.1-bitop0 liblua5.1-expat \
+                        liblua5.1-json liblua5.1-socket2
 ----
 
 * Create a directory for building the software:

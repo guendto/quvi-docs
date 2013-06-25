@@ -59,45 +59,34 @@ $ mkdir -p build/{inst,tar} ; cd build/tar
 * Get the official releases:
 +
 ----
-$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi-scripts/libquvi-scripts-0.9.20130520.tar.xz
-$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi-scripts/libquvi-scripts-0.9.20130520.tar.xz.sig
-
-$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi/libquvi-0.9.1.tar.xz
-$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi/libquvi-0.9.1.tar.xz.sig
-
-$ wget http://downloads.sourceforge.net/project/quvi/0.9/quvi/quvi-0.9.1.tar.xz
-$ wget http://downloads.sourceforge.net/project/quvi/0.9/quvi/quvi-0.9.1.tar.xz.sig
+$ curl -JLO# "http://quvi.sf.net/latest?q=s,0.9"
+$ curl -JLO# "http://quvi.sf.net/latest?q=l,0.9"
+$ curl -JLO# "http://quvi.sf.net/latest?q=q,0.9"
 ----
 
 * Verify the downloads (optional, recommended):
 +
 ----
+$ curl -JLO# "http://quvi.sf.net/latest?q=s,0.9&sig"
+$ curl -JLO# "http://quvi.sf.net/latest?q=l,0.9&sig"
+$ curl -JLO# "http://quvi.sf.net/latest?q=q,0.9&sig"
+
 $ gpg --recv-keys 0xCAC8C0A9
-$ gpg --verify libquvi-scripts-0.9.20130520.tar.xz.sig
-$ gpg --verify libquvi-0.9.1.tar.xz.sig
-$ gpg --verify quvi-0.9.1.tar.xz.sig
+$ gpg --verify-files *.sig
 ----
 +
-There are also SHA512SUMS files for each quvi project component:
+Verify the additional checksums (for the paranoid):
 +
 ----
-$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi-scripts/SHA512SUMS \
-          -O SHA512SUMS.libquvi-scripts
-$ gpg --verify SHA512SUMS.libquvi-scripts
-$ sha512sum -c SHA512SUMS.libquvi-scripts
+$ curl -L#o SHA512SUMS.scripts "http://quvi.sf.net/latest?q=s,0.9&csum"
+$ curl -L#o SHA512SUMS.quvi "http://quvi.sf.net/latest?q=q,0.9&csum"
+$ curl -L#o SHA512SUMS.lib "http://quvi.sf.net/latest?q=l,0.9&csum"
 
-$ wget http://downloads.sourceforge.net/project/quvi/0.9/libquvi/SHA512SUMS \
-          -O SHA512SUMS.libquvi
-$ gpg --verify SHA512SUMS.libquvi
-$ sha512sum -c SHA512SUMS.libquvi
-
-$ wget http://downloads.sourceforge.net/project/quvi/0.9/quvi/SHA512SUMS \
-          -O SHA512SUMS.quvi
-$ gpg --verify SHA512SUMS.quvi
-$ sha512sum -c SHA512SUMS.quvi
+$ gpg --verify-files SHA512SUMS.*
+$ sha512sum -c SHA512SUMS.*
 ----
 
-* Export the destination path for practical purposes:
+* Export the destination path:
 +
 ----
 $ cd ..
@@ -109,9 +98,9 @@ The software will be installed to the ~/build/inst/ directory.
 * Extract, compile and install libquvi-scripts:
 +
 ----
-$ tar xf tar/libquvi-scripts-0.9.20130520.tar.xz
-$ cd libquvi-scripts-0.9.20130520
-$ mkdir inst ; cd inst
+$ tar xf tar/libquvi-scripts-0.9.*.tar.xz
+$ cd libquvi-scripts-0.9.*
+$ mkdir tmp; cd tmp
 $ ../configure --prefix=$DEST && make install
 $ cd ../..
 ----
@@ -119,9 +108,9 @@ $ cd ../..
 * Extract, compile and install libquvi:
 +
 ----
-$ tar xf tar/libquvi-0.9.1.tar.xz
-$ cd libquvi-0.9.1
-$ mkdir inst ; cd inst
+$ tar xf tar/libquvi-0.9.*.tar.xz
+$ cd libquvi-0.9.*
+$ mkdir tmp; cd tmp
 $ PKG_CONFIG_PATH=$DEST/lib/pkgconfig/ ../configure --prefix=$DEST
 $ make install
 $ cd ../..
@@ -130,9 +119,9 @@ $ cd ../..
 * Extract, compile and install quvi:
 +
 ----
-$ tar xf tar/quvi-0.9.1.tar.xz
-$ cd quvi-0.9.1
-$ mkdir inst ; cd inst
+$ tar xf tar/quvi-0.9.*.tar.xz
+$ cd quvi-0.9.*
+$ mkdir tmp; cd tmp
 $ PKG_CONFIG_PATH=$DEST/lib/pkgconfig/ ../configure --prefix=$DEST
 $ make install
 $ cd ../..
@@ -150,7 +139,7 @@ $ $DEST/bin/quvi --version
 * Modify MANPATH so that 'man(1)' will find the installed manpages:
 +
 ----
-$ export MANPATH=$MANPATH:$DEST/share/man/
+$ export MANPATH=$DEST/share/man/:$MANPATH
 $ man 1 quvi-get
 $ $DEST/bin/quvi help get
 ----

@@ -63,6 +63,9 @@ $ curl -JLO# "http://quvi.sf.net/latest?q=s,0.9"
 $ curl -JLO# "http://quvi.sf.net/latest?q=l,0.9"
 $ curl -JLO# "http://quvi.sf.net/latest?q=q,0.9"
 ----
++
+TIP: You can also use _wget --content-disposition URL_ instead of
+     'curl(1)'
 
 * Verify the downloads (optional, recommended):
 +

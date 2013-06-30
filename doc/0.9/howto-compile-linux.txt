@@ -52,13 +52,13 @@ $ sudo aptitude install liblua5.1-bitop0 liblua5.1-expat \
 * Create a directory for building the software:
 +
 ----
-$ cd ~
-$ mkdir -p build/{inst,tar} ; cd build/tar
+$ mkdir -p ~/build/{inst,tar}
 ----
 
 * Get the official releases:
 +
 ----
+$ cd ~/build/tar/
 $ curl -JLO# "http://quvi.sf.net/latest?q=s,0.9"
 $ curl -JLO# "http://quvi.sf.net/latest?q=l,0.9"
 $ curl -JLO# "http://quvi.sf.net/latest?q=q,0.9"
@@ -73,7 +73,6 @@ TIP: You can also use _wget --content-disposition URL_ instead of
 $ curl -JLO# "http://quvi.sf.net/latest?q=s,0.9&sig"
 $ curl -JLO# "http://quvi.sf.net/latest?q=l,0.9&sig"
 $ curl -JLO# "http://quvi.sf.net/latest?q=q,0.9&sig"
-
 $ gpg --recv-keys 0xCAC8C0A9
 $ gpg --verify-files *.sig
 ----
@@ -84,7 +83,6 @@ Verify the additional checksums (for the paranoid):
 $ curl -L#o SHA512SUMS.scripts "http://quvi.sf.net/latest?q=s,0.9&csum"
 $ curl -L#o SHA512SUMS.quvi "http://quvi.sf.net/latest?q=q,0.9&csum"
 $ curl -L#o SHA512SUMS.lib "http://quvi.sf.net/latest?q=l,0.9&csum"
-
 $ gpg --verify-files SHA512SUMS.*
 $ sha512sum -c SHA512SUMS.*
 ----
@@ -92,7 +90,7 @@ $ sha512sum -c SHA512SUMS.*
 * Export the destination path:
 +
 ----
-$ cd ..
+$ cd ~/build/
 $ export DEST=`pwd`/inst
 ----
 +
@@ -102,32 +100,29 @@ The software will be installed to the ~/build/inst/ directory.
 +
 ----
 $ tar xf tar/libquvi-scripts-0.9.*.tar.xz
-$ cd libquvi-scripts-0.9.*
-$ mkdir tmp; cd tmp
+$ cd libquvi-scripts-0.9.* ; mkdir tmp ; cd tmp
 $ ../configure --prefix=$DEST && make install
-$ cd ../..
+$ cd ~/build/
 ----
 
 * Extract, compile and install libquvi:
 +
 ----
 $ tar xf tar/libquvi-0.9.*.tar.xz
-$ cd libquvi-0.9.*
-$ mkdir tmp; cd tmp
+$ cd libquvi-0.9.* ; mkdir tmp ; cd tmp
 $ PKG_CONFIG_PATH=$DEST/lib/pkgconfig/ ../configure --prefix=$DEST
 $ make install
-$ cd ../..
+$ cd ~/build/
 ----
 
 * Extract, compile and install quvi:
 +
 ----
 $ tar xf tar/quvi-0.9.*.tar.xz
-$ cd quvi-0.9.*
-$ mkdir tmp; cd tmp
+$ cd quvi-0.9.* ; mkdir tmp ; cd tmp
 $ PKG_CONFIG_PATH=$DEST/lib/pkgconfig/ ../configure --prefix=$DEST
 $ make install
-$ cd ../..
+$ cd ~/build/
 ----
 
 Running

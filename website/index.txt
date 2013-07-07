@@ -22,12 +22,6 @@ News
   'libquvi-scripts(7)' 0.4.15
   http://article.gmane.org/gmane.comp.web.flash.quvi/261[released]
 
-2013-03-19::
-  'libquvi-scripts(7)' 0.4.14 http://is.gd/UU9vkM[released]
-
-2013-03-03::
-  'libquvi-scripts(7)' 0.4.13 http://is.gd/41GWgp[released]
-
 [[overview]]
 Overview
 --------

@@ -90,44 +90,58 @@ Long-term goals::
   graduate as the next stable (1.0) replacing the 0.4 series.
 
 [[get]]
-Get
----
+Get -- Official releases
+------------------------
 
-Official releases
-~~~~~~~~~~~~~~~~~
+=== Stable (0.4)
 
-.STABLE (0.4)
+The 0.4 is the 'current stable' series.  The series is now in the
+'maintenance mode' -- the development has ceased -- and will only have
+'maintenance releases' from time to time.
 
-* http://quvi.sf.net/latest?q=s,0.4[libquvi-scripts]
-    (http://quvi.sf.net/latest?q=s,0.4&sig[.sig]
-     | http://quvi.sf.net/latest?q=s,0.4&csum[SHA512SUMS]
-     | http://sf.net/projects/quvi/files/0.4/libquvi-scripts/[Browse])
-* http://quvi.sf.net/latest?q=l,0.4[libquvi]
-    (http://quvi.sf.net/latest?q=l,0.4&sig[.sig]
-     | http://quvi.sf.net/latest?q=l,0.4&csum[SHA512SUMS]
-     | http://sf.net/projects/quvi/files/0.4/libquvi/[Browse])
-* http://quvi.sf.net/latest?q=q,0.4[quvi]
-    (http://quvi.sf.net/latest?q=q,0.4&sig[.sig]
-     | http://quvi.sf.net/latest?q=q,0.4&csum[SHA512SUMS]
-     | http://sf.net/projects/quvi/files/0.4/quvi/[Browse])
+  * http://quvi.sf.net/latest?q=s,0.4[libquvi-scripts] --
+      (http://quvi.sf.net/latest?q=s,0.4&sig[.sig]
+       | http://quvi.sf.net/latest?q=s,0.4&csum[SHA512SUMS]
+       | http://sf.net/projects/quvi/files/0.4/libquvi-scripts/[Browse])
+  * http://quvi.sf.net/latest?q=l,0.4[libquvi] --
+      (http://quvi.sf.net/latest?q=l,0.4&sig[.sig]
+       | http://quvi.sf.net/latest?q=l,0.4&csum[SHA512SUMS]
+       | http://sf.net/projects/quvi/files/0.4/libquvi/doc/[Documentation]
+       | http://sf.net/projects/quvi/files/0.4/libquvi/[Browse])
+  * http://quvi.sf.net/latest?q=q,0.4[quvi] --
+      (http://quvi.sf.net/latest?q=q,0.4&sig[.sig]
+       | http://quvi.sf.net/latest?q=q,0.4&csum[SHA512SUMS]
+       | http://sf.net/projects/quvi/files/0.4/quvi/[Browse])
 
-.UNSTABLE (0.9)
+=== Unstable (0.9)
 
-* http://quvi.sf.net/latest?q=s,0.9[libquvi-scripts]
-    (http://quvi.sf.net/latest?q=s,0.9&sig[.sig]
-     | http://quvi.sf.net/latest?q=s,0.9&csum[SHA512SUMS]
-     | http://sf.net/projects/quvi/files/0.9/libquvi-scripts/[Browse])
-* http://quvi.sf.net/latest?q=l,0.9[libquvi]
-    (http://quvi.sf.net/latest?q=l,0.9&sig[.sig]
-     | http://quvi.sf.net/latest?q=l,0.9&csum[SHA512SUMS]
-     | http://sf.net/projects/quvi/files/0.9/libquvi/[Browse])
-* http://quvi.sf.net/latest?q=q,0.9[quvi]
-    (http://quvi.sf.net/latest?q=q,0.9&sig[.sig]
-     | http://quvi.sf.net/latest?q=q,0.9&csum[SHA512SUMS]
-     | http://sf.net/projects/quvi/files/0.9/quvi/[Browse])
+The 0.9 series is currently _under development_, and will gradually
+mature as the next stable (1.0), replacing the 0.4 series completely.
 
-For building instructions, see the link:#doc[Documentation] section for
-<<howtos,HOWTOs>>.
+  * http://quvi.sf.net/latest?q=s,0.9[libquvi-scripts] --
+      (http://quvi.sf.net/latest?q=s,0.9&sig[.sig]
+       | http://quvi.sf.net/latest?q=s,0.9&csum[SHA512SUMS]
+      | http://sf.net/projects/quvi/files/0.9/libquvi-scripts/[Browse])
+  * http://quvi.sf.net/latest?q=l,0.9[libquvi] --
+      (http://quvi.sf.net/latest?q=l,0.9&sig[.sig]
+       | http://quvi.sf.net/latest?q=l,0.9&csum[SHA512SUMS]
+       | http://sf.net/projects/quvi/files/0.9/libquvi/doc/[Documentation]
+       | http://sf.net/projects/quvi/files/0.9/libquvi/[Browse])
+  * http://quvi.sf.net/latest?q=q,0.9[quvi] --
+      (http://quvi.sf.net/latest?q=q,0.9&sig[.sig]
+       | http://quvi.sf.net/latest?q=q,0.9&csum[SHA512SUMS]
+       | http://sf.net/projects/quvi/files/0.9/quvi/[Browse])
+
+The series may still see:
+
+  * ABI and API breakages with the earlier 0.9 versions
+  * Feature additions and/or removals
+
+The 0.9 series is incompatible with the 0.4 series -- see
+<<doc,Documentation>> and 'quvi-prj-ptnine(7)' for an overview
+
+TIP: For building instructions, see the 'HOWTOs' section of the
+     <<doc,Documentation>>
 
 git repositories
 ~~~~~~~~~~~~~~~~

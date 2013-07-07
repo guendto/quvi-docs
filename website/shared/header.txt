@@ -12,13 +12,13 @@ quvi project
 :toc-placement: manual
 
 link:index.html#overview[Overview]
-  | link:index.html#news[News]
+  | link:index.html#faq[FAQs]
+  | link:index.html#li[License]
   | link:index.html#status[Status]
   | link:index.html#get[Get]
-  | link:index.html#faq[FAQs]
-  | link:index.html#prj[Projects]
   | link:index.html#doc[Documentation]
   | link:index.html#bugs[Bugs]
+  | link:index.html#prj[Projects]
   | link:mailinglist.html[MailingLists]
   | link:contrib.html[Contributing]
 

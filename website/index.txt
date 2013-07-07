@@ -173,38 +173,42 @@ written a patch.
 Documentation
 -------------
 
-.Notes
+=== libquvi(3) C API reference documentation
 
-* link:doc/other/quvi-prj-ptnine.html[quvi-prj-ptnine(7)] -
-  Overview of the changes in the 0.9+ series
+The documentation constains plenty of examples and tutorials, and can be
+viewed online at:
 
-.Manual pages
-Each component comes with manpages which are installed by default.
+  * libquvi 0.4 - (link:doc/0.4/[Browse])
+  * libquvi 0.9 - (link:doc/0.9/[Browse])
 
+Or, downloaded for viewing offline:
+
+  * <<get, Official releases>>
+
+Alternatively, generated from the source code:
+
+  * For the instructions, see the 'README' file distributed with the
+    source code
+
+=== Recommended reading
+
+* The manpages are installed by default and contain much information:
++
 ----
 $ man 7 libquvi-scripts
 $ man 3 libquvi
 $ man 1 quvi
 ----
 
-.C API reference documentation for 'libquvi(3)'
+* An link:doc/other/quvi-prj-ptnine.html[overview] of the changes in the
+  0.9+ series -- 'quvi-prj-ptnine(7)'
 
-Both 0.4 and 0.9 can be found online and downloaded (see <<get,Official
-releases>>).  If you are planning to generate the documentation from the
-source code, see the README file for more information.
-
-* libquvi 0.4 - (link:doc/0.4/[Browse])
-* libquvi 0.9 - (link:doc/0.9/[Browse])
-
-[[howtos]]
-.HOWTOs
-
-* HOWTO: link:doc/other/howto-compile-linux.html[Compile 0.9+ on GNU/Linux]
-  (applicable to the 0.4 series for most parts, also)
+* link:doc/other/howto-compile-linux.html[HOWTO: Compile 0.9+ on
+  GNU/Linux] -- 'howto-compile-linux(7)'
 
 [[prj]]
-Projects using 'libquvi(3)'
----------------------------
+Projects using libquvi(3)
+-------------------------
 
 '<<q,quvi(1)>>'::
   The silly suite to access the flash media stream properties.
@@ -222,8 +226,8 @@ https://github.com/tlvince/sniffy[sniffy]::
   in your favourite media player.
 
 [[bind]]
-'libquvi(3)' bindings for other languages
------------------------------------------
+libquvi(3) bindings for other languages
+---------------------------------------
 
 Python::
   https://github.com/metal3d/python-libquvi[python-libquvi]

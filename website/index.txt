@@ -28,59 +28,116 @@ News
 2013-03-03::
   'libquvi-scripts(7)' 0.4.13 http://is.gd/41GWgp[released]
 
-[[about]]
-About
------
+[[overview]]
+Overview
+--------
+
+=== In brief
 
 The quvi project parses media stream URLs for Internet applications that
 would otherwise have to use adobe flash multimedia platform to access
-the media streams. Typical examples of this are different media hosts,
-such as YouTube, for videos that utilize this platform to deliver the
-media content.
+the media streams. The typical examples of this are the different media
+hosts, such as YouTube, for videos that use this "multimedia platform"
+to deliver their content.
 
-[[q]]
-
-The project consists of the following components:
+[[pc]]
+=== quvi project consists of
 
 libquvi-scripts::
   The support scripts written in http://lua.org[Lua] that 'libquvi(3)'
-  calls to parse the media stream properties.
+  calls upon to parse the media stream properties
 
 libquvi::
-  The library with the C API for parsing the media stream properties.
+  The library with the C API for parsing the media stream properties
 
 quvi::
-  The 'silly suite to access the flash media stream properties'. It
-  contains the 'quvi(1)' command line tool.
+  The silly command-line-tool suite to access the flash media stream
+  properties
 
-This project does not aim to provide a working alternative to the flash
-technology but attempts to work around the flash technology.  See
-https://en.wikipedia.org/wiki/Adobe_Flash#Alternatives[here] for
-available alternatives.
+Overview: Questions and answers
+-------------------------------
 
-Why not adobe flash?
-~~~~~~~~~~~~~~~~~~~~
+=== What is the quvi project?
 
-  * https://en.wikipedia.org/wiki/Adobe_Flash#Performance[Performance]
-  * https://en.wikipedia.org/wiki/Adobe_Flash#Availability_on_desktop_operating_systems[Platforms]
-  * https://en.wikipedia.org/wiki/Adobe_Flash#Flash_client_security[Security]
+* quvi is a workaround to access the media of the hosts that require
+  adobe flash to access their content
+
+* quvi, essentially, parses direct media stream URLs to access the media
+
+* The project link:#pc[consists] of 'quvi', 'libquvi' and 'libquvi-scripts'
+
+=== What is the purpose/goal of this project?
+* To provide access to the hosted media without having to enable flash
+
+=== Is the project an alternative to the flash?
+
+In a way, yes: ::
+  We are committed to provide an alternative method to access the hosted
+  media _without having to enable the flash_.
+
+quvi is: ::
+  Really a workaround, not truly an alternative to the flash.
+
+See https://en.wikipedia.org/wiki/Adobe_Flash#Alternatives[here] for: ::
+  Alternatives that either, enable the flash technology, or are aimed to
+  provide a complete platform alternative to this "multimedia platform".
+
+=== How does the quvi project work?
+* libquvi scripts parse and return the media properties for the media URLs
+* libquvi returns these properties via the C API to the applications
+
+=== What are the libquvi scripts?
+
+* A selection of http://lua.org[Lua] scripts, designed to be easy to
+  maintain and distribute
+
+* 0.9+ extends the selection to additional script types, e.g. playlist
+  and scan
+
+=== How does quvi (the command) fit in all this?
+
+* quvi(1) is a command-line-tool that provides CLI access to many of
+  libquvi features
+
+* 0.9+ integrates additional functions, e.g. quvi-get(1) and quvi-scan(1)
+
+=== What else can quvi project be used for?
+
+Some users are known to: ::
+  Use quvi(1) to have parse the media stream URLs, and use the `--exec'
+  option together with an external media player, e.g. mplayer, to stream
+  the media from its source.
++
+----
+$ quvi dump -e "mplayer %u" MEDIA_URL   ;# 0.9+
+$ quvi --exec="mplayer %u" MEDIA_URL    ;# 0.4
+----
+
+0.9+ extends the project features in many ways: ::
+  As of 0.9+, the project can be used, for example, to parse playlist
+  and scan URLs for embedded media URLs. The project parses many more
+  media properties in addition to the media stream URLs.
+
+=== Why not adobe flash?
+* https://en.wikipedia.org/wiki/Adobe_Flash#Performance[Performance]
+* https://en.wikipedia.org/wiki/Adobe_Flash#Availability_on_desktop_operating_systems[Platforms]
+* https://en.wikipedia.org/wiki/Adobe_Flash#Flash_client_security[Security]
+
+[[faq]]
+=== Frequently asked questions
+
+Additional FAQs (if the above didn't address your questions):
+
+  * link:faq_general.html[FAQ: General questions/answers]
+  * link:faq_library.html[FAQ: Questions/answers specific to libquvi]
 
 [[li]]
-License
-~~~~~~~
+=== License
 
 include::shared/license.txt[]
 
-[[faq]]
-FAQs
-~~~~
-
-  * link:faq_general.html[FAQ: General]
-  * link:faq_library.html[FAQ: Library]
-
 [[status]]
-Status
-~~~~~~
+=== Status
 
 Current::
   0.4 is the current stable. 0.9 is the current unstable.

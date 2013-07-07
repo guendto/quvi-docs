@@ -1,13 +1,13 @@
 
 0.9 and later::
-  All three: 'quvi(1)', 'libquvi(3)' and 'libquvi-scripts(7)', are
+  'quvi(1)', 'libquvi(3)' and 'libquvi-scripts(7)', are
   http://www.gnu.org/philosophy/free-sw.html[Free Software], licensed
   under the 'GNU *Affero* General Public License'
-  (http://www.gnu.org/licenses/agpl.html[AGPLv3+]).
+  (http://www.gnu.org/licenses/agpl.html[AGPLv3+])
 
 0.4 series::
-  All three: 'quvi(1)', 'libquvi(3)' and 'libquvi-scripts(7)', are
+  'quvi(1)', 'libquvi(3)' and 'libquvi-scripts(7)', are
   http://www.gnu.org/philosophy/free-sw.html[Free Software], licensed
   under the 'GNU *Lesser* General Public License'
-  (http://www.gnu.org/licenses/lgpl-2.1.html[LGPLv2.1+]).
+  (http://www.gnu.org/licenses/lgpl-2.1.html[LGPLv2.1+])
 

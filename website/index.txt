@@ -1,5 +1,33 @@
 include::shared/header.txt[]
 
+[[news]]
+News
+----
+
+2013-06-19::
+  http://article.gmane.org/gmane.comp.web.flash.quvi/277[quvi] v0.9.2
+  and
+  http://article.gmane.org/gmane.comp.web.flash.quvi/278[libquvi-scripts]
+  v0.9.20130619 released
+
+2013-06-18::
+  'libquvi-scripts(7)' 0.4.16
+  http://article.gmane.org/gmane.comp.web.flash.quvi/275[released]
+
+2013-05-20::
+  Initial http://article.gmane.org/gmane.comp.web.flash.quvi/271[release]
+  of the 0.9 series
+
+2013-05-09::
+  'libquvi-scripts(7)' 0.4.15
+  http://article.gmane.org/gmane.comp.web.flash.quvi/261[released]
+
+2013-03-19::
+  'libquvi-scripts(7)' 0.4.14 http://is.gd/UU9vkM[released]
+
+2013-03-03::
+  'libquvi-scripts(7)' 0.4.13 http://is.gd/41GWgp[released]
+
 [[about]]
 About
 -----
@@ -60,34 +88,6 @@ Current::
 Long-term goals::
   Maintain the 0.4 series. Develop the 0.9 series which will ultimately
   graduate as the next stable (1.0) replacing the 0.4 series.
-
-[[news]]
-News
-----
-
-2013-06-19::
-  http://article.gmane.org/gmane.comp.web.flash.quvi/277[quvi] v0.9.2
-  and
-  http://article.gmane.org/gmane.comp.web.flash.quvi/278[libquvi-scripts]
-  v0.9.20130619 released
-
-2013-06-18::
-  'libquvi-scripts(7)' 0.4.16
-  http://article.gmane.org/gmane.comp.web.flash.quvi/275[released]
-
-2013-05-20::
-  Initial http://article.gmane.org/gmane.comp.web.flash.quvi/271[release]
-  of the 0.9 series
-
-2013-05-09::
-  'libquvi-scripts(7)' 0.4.15
-  http://article.gmane.org/gmane.comp.web.flash.quvi/261[released]
-
-2013-03-19::
-  'libquvi-scripts(7)' 0.4.14 http://is.gd/UU9vkM[released]
-
-2013-03-03::
-  'libquvi-scripts(7)' 0.4.13 http://is.gd/41GWgp[released]
 
 [[get]]
 Get

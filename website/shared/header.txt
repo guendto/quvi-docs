@@ -11,7 +11,7 @@ quvi project
 :toc:
 :toc-placement: manual
 
-link:index.html#about[About]
+link:index.html#overview[Overview]
   | link:index.html#news[News]
   | link:index.html#status[Status]
   | link:index.html#get[Get]

@@ -35,19 +35,29 @@ Building and installation
 $ sudo aptitude install build-essential libgcrypt11-dev libproxy-dev \
                         libcurl4-gnutls-dev liblua5.1-0-dev          \
                         libjson-glib-dev libxml2-dev
-
-# Debian Wheezy:
+----
++
+On Debian *Wheezy*:
++
+----
 $ sudo aptitude install lua-bitop lua-expat lua-json lua-socket
-
-  NOTE: 2013-06-04 - Debian, Wheezy
-        At the time of writing this, the lua-socket (listed among the
-        libquvi-scripts prerequisites) package does not contain the
-        files for Lua 5.2, forcing the installation of liblua 5.1.
-
-# Debian Squeeze:
-$ sudo aptitude install liblua5.1-bitop0 liblua5.1-expat \
+----
++
+NOTE: At this time (2013-06-04), the "lua-socket" package does not
+      contain the files for Lua 5.2, forcing the installation of the
+      "liblua5.1-0-dev" with Wheezy
++
+On Debian *Squeeze*:
++
+----
+$ sudo aptitude install liblua5.1-bitop0 liblua5.1-expat0 \
                         liblua5.1-json liblua5.1-socket2
 ----
++
+NOTE: The package "libjson-glib-dev" for Squeeze is outdated and does
+      not implement the features that quvi(1) uses, meaning that quvi(1)
+      will be built without JsonGLib support, and cannot therefore use
+      "--print-format json"
 
 * Create a directory for building the software:
 +

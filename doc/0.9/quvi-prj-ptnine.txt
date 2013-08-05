@@ -8,13 +8,16 @@ quvi-prj-ptnine - Overview of the changes in the quvi project 0.9
 DESCRIPTION
 -----------
 
-This document is not intended to be a comprehensive list of all of the
-changes made in the quvi project since the 0.4 series, but only a quick
-overview.
+This document is not a comprehensive list of the changes since the 0.4
+but a quick overview.
+
+=== In brief
 
 The 0.9 changes how the project operates, integrates and interacts with
 the other components and applications that depend on it.  Almost all
 aspects of the project were redesigned and rewritten for the 0.9 series.
+
+=== Note
 
 This document will remain as a work-in-progress (WIP) until the 0.9
 graduates as the next stable (1.0) replacing the current stable (0.4).
@@ -50,8 +53,8 @@ Licensing changes::
   See <<li,LICENSE>> for more information.
 
 [[lq]]
-'libquvi(3)'
-------------
+libquvi(3)
+----------
 
 New C API::
   The C API was redesigned and provides many new features.
@@ -107,8 +110,8 @@ Cookie support::
   it does not provide a way to disable the cookie parser.
 
 [[lqs]]
-'libquvi-scripts(7)'
---------------------
+libquvi-scripts(7)
+------------------
 
 Installation path::
   The scripts of 'libquvi-scripts(7)' installs now, by default, to
@@ -205,7 +208,7 @@ Persistant properties::
 NOTE: 0.9 renamed the `redirect_url' to `goto_url'
 
 [[qm]]
-=== 'quvi-modules(7)'
+=== quvi-modules(7)
 
 These are a selection of 'importable' quvi modules implemented in Lua
 and provided for the 'libquvi-scripts(7)' to use.  See also
@@ -235,7 +238,7 @@ Constants::
   'libquvi(3)'.
 
 [[qo]]
-=== 'quvi-object(7)' (quvi.*)
+=== quvi-object(7) -- quvi.*
 
 This is the collection of libquvi functions implemented in C and
 provided for the 'libquvi-scripts(7)' to use.  See also 'quvi-object(7)'
@@ -268,8 +271,8 @@ http::
 NOTE: 'quvi.fetch' is now accessible as 'quvi.http.fetch'
 
 [[q]]
-'quvi(1)'
----------
+quvi(1)
+-------
 
 Redefined role::
   The role of 'quvi(1)' is now a 'multipurpose tool'. It can, for
@@ -330,19 +333,12 @@ WHERE
 See http://quvi.sourceforge.net/#get.  Any further maintenance of the
 0.4 series will take place in their corresponding 'maint-0.4' branches.
 
-[[r090]]
-RELEASE 0.9.0
--------------
-
-There will *not* be an official 0.9.0 release. Instead, the first
-official release will be the 0.9.1 which will follow sometime after the
-initial push of 0.9 code into the public repos.
-
 [[unst]]
 UNSTABLE
 --------
 
-The 0.9 series are *unstable*.
+The 0.9 series is *unstable*. Expect bugs.  0.9 will gradually mature as
+the next stable (1.0) replacing the current stable (0.4).
 
 [[ifdev]]
 === If you are a developer
@@ -350,14 +346,13 @@ The 0.9 series are *unstable*.
 Using the new C API::
   You should probably wait for the next stable (1.0) release if you are
   planning to use the 0.9/1.0 C API in your application. The C API may
-  still undergo destabilizing effects which would only contribute to
+  still undergo destabilizing changes which would only contribute to
   your workload.
 
 Bindings for the new C API::
-  If you are maintaining or planning to develop bindings for another
-  language, consider taking part in the 0.9 development early on the
-  development code to help iron out any possible issues before the next
-  stable release.
+  If you are maintaining (or planning to develop) bindings for another
+  language, consider taking part early in the 0.9 development to help
+  iron out any possible issues before the next (1.0) stable.
 
 If you are interested in developing the quvi project, see
 <<contr,CONTRIBUTE>>.
@@ -365,28 +360,27 @@ If you are interested in developing the quvi project, see
 [[iftr]]
 === If you are a translator
 
-It is best to wait for the next stable release (1.0). Both 'libquvi(3)'
-and 'quvi(1)' are likely to undergo many changes before we reach the 1.0
-milestone. This would most likely only add, unnecessarily, to the
-workload of maintaining the translations.
+It is best to wait for the next stable (1.0). Both 'libquvi(3)' and
+'quvi(1)' are still likely to undergo many changes before they reach the
+1.0 milestone. These changes would only add the workload for having to
+maintain the translations side-by-side.
 
 [[ifpkg]]
 === If you are a packager
 
 Unless you are packaging bleeding-edge software for a bleeding-edge
-distro, it is best to wait for the next stable release (1.0).
+distro, it is best to wait for the next stable (1.0).
 
 [[contr]]
 CONTRIBUTE
 ----------
 
 The purpose of this section is to underline the parts of the quvi
-project that, either require or could use, further development.
+project that -- either require or could use -- additional development.
 
-NOTE: See http://quvi.sourceforge.net/contrib/ for info on how to
-      contribute to the project
+NOTE: See also http://quvi.sourceforge.net/contrib/
 
-=== 'libquvi-scripts(7)'
+=== libquvi-scripts(7)
 
 Media scripts::
   Most of the media scripts from the 0.4 still remain to be ported to
@@ -414,13 +408,13 @@ Scan scripts::
   Currently only 'scan/youtube.lua' exists. Additional support could be
   implemented since many media hosts allow embedding their content.
 
-=== 'libquvi(3)' and 'quvi(1)'
+=== libquvi(3) and quvi(1)
 
 There is a fair likelyhood of finding remaining bugs in these two. They
 may still also need fine-tuning. Consider testing and reporting how the
 software builds, performs and behaves. See also <<rb,Reporting bugs>>.
 
-'quvi-get(1)'::
+quvi-get(1)::
   Currently supports only HTTP stream extractions. Support for
   additional protocols could be implemented although this remains to be
   investigated further. For the HTTP implementation, see the 'src/get/'
@@ -430,17 +424,17 @@ software builds, performs and behaves. See also <<rb,Reporting bugs>>.
 INSTALLATION
 ------------
 
-Each project component comes with the *README* file which will cover the
+Each project component source tarball contains the *README* file which will cover the
 basic instructions and provides any additional information (e.g.
-regarding any non-standard options not covered by GNU Autotools). *Read
-the README file first*, it is maintained manually and exists for a
-reason.
+regarding any non-standard options not covered by GNU Autotools).
+
+NOTE: *Read the README first*, it is maintained by-hand and exists for a
+      reason
 
 If you cannot find the answers in the README, post your questions to the
 <<rb,quvi-devel>> mailing list. It's possible that some of details may
-still be missing from the README file.
-
-The INSTALL file is the standard file provided by GNU Autotools.
+still be missing from the README.  The INSTALL file is the standard file
+provided by GNU Autotools.
 
 [[doc]]
 DOCUMENTATION
@@ -468,8 +462,8 @@ be found under the doc/ subdir.
 The libquvi C API reference documentation is generated from the
 'doxygen(1)' comments.
 
-NOTE: The documentation will go online following the <<r090,0.9.1>>
-      release and will be available at http://quvi.sourceforge.net/doc/
+NOTE: You can browse the documentation online at
+      http://quvi.sourceforge.net/doc/
 
 === Examples
 

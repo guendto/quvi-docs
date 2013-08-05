@@ -197,8 +197,7 @@ The series may still see:
 The 0.9 series is incompatible with the 0.4 series -- see
 <<doc,Documentation>> and 'quvi-prj-ptnine(7)' for an overview
 
-TIP: For building instructions, see the 'HOWTOs' section of the
-     <<doc,Documentation>>
+TIP: For building instructions, see the <<doc,Documentation>>
 
 git repositories
 ~~~~~~~~~~~~~~~~

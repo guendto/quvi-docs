@@ -436,6 +436,9 @@ If you cannot find the answers in the README, post your questions to the
 still be missing from the README.  The INSTALL file is the standard file
 provided by GNU Autotools.
 
+See also::
+  link:howto-compile-linux.html[HOWTO: Compile quvi on GNU/Linux]
+
 [[doc]]
 DOCUMENTATION
 -------------

@@ -378,7 +378,7 @@ CONTRIBUTE
 The purpose of this section is to underline the parts of the quvi
 project that -- either require or could use -- additional development.
 
-NOTE: See also http://quvi.sourceforge.net/contrib/
+NOTE: See also http://quvi.sourceforge.net/contrib
 
 === libquvi-scripts(7)
 
@@ -466,7 +466,7 @@ The libquvi C API reference documentation is generated from the
 'doxygen(1)' comments.
 
 NOTE: You can browse the documentation online at
-      http://quvi.sourceforge.net/doc/
+      http://quvi.sourceforge.net/doc/0.9/
 
 === Examples
 

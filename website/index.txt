@@ -266,12 +266,19 @@ $ man 1 quvi
 Projects using libquvi(3)
 -------------------------
 
-'<<q,quvi(1)>>'::
-  The silly suite to access the flash media stream properties.
-
 http://cclive.sf.net/[cclive]::
   A command line media download tool with low system footprint,
   a rewrite in C++ of http://clive.sf.net/[clive].
+
+http://git-annex.branchable.com/[git-annex]::
+  git-annex allows managing files with git, without checking the file
+  contents into git.
+  +
+  * http://git-annex.branchable.com/tips/using_the_web_as_a_special_remote/#quvi[Using
+  the web as a special remote (videos w/ quvi)].
+
+'<<q,quvi>>'::
+  The silly suite to access the flash media stream properties.
 
 http://www.gnome.org/projects/totem/[totem]::
   Totem is the official movie player of the GNOME desktop environment

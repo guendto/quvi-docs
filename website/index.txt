@@ -4,6 +4,10 @@ include::shared/header.txt[]
 News
 ----
 
+2013-08-28::
+  http://article.gmane.org/gmane.comp.web.flash.quvi/320[quvi]
+  v0.9.3.1 released
+
 2013-08-05::
   http://article.gmane.org/gmane.comp.web.flash.quvi/303[libquvi-scripts]
   v0.9.20130805 released
@@ -23,10 +27,6 @@ News
   and
   http://article.gmane.org/gmane.comp.web.flash.quvi/278[libquvi-scripts]
   v0.9.20130619 released
-
-2013-06-18::
-  'libquvi-scripts(7)' 0.4.16
-  http://article.gmane.org/gmane.comp.web.flash.quvi/275[released]
 
 [[overview]]
 Overview

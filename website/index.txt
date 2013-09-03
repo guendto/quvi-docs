@@ -6,9 +6,11 @@ News
 
 2013-09-03::
   http://article.gmane.org/gmane.comp.web.flash.quvi/323[libquvi]
-  v0.9.3 released and
+  v0.9.3 released,
   http://article.gmane.org/gmane.comp.web.flash.quvi/322[libquvi-scripts]
-  v0.9.20130903 released
+  v0.9.20130903 released and
+  http://article.gmane.org/gmane.comp.web.flash.quvi/324[libquvi-scripts]
+  v0.4.18 released
 
 2013-08-28::
   http://article.gmane.org/gmane.comp.web.flash.quvi/320[quvi]
